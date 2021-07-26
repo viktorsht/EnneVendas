@@ -1,7 +1,7 @@
 import sqlite3
 class Query:
     @staticmethod
-    def query_criar_tabela():
+    def criar_tabela():
         return """
                 CREATE TABLE IF NOT EXISTS Cosmeticos
                 (
@@ -15,27 +15,27 @@ class Query:
                 """
 
     @staticmethod
-    def query_salvar():
+    def salvar():
         return  """
                 INSERT INTO Cosmeticos (codigo, nome,  qtd, preco, tipo, genero)
                 VALUES (?, ?, ?, ?, ?, ?)
                 """
 
     @staticmethod
-    def query_atualizar():
+    def atualizar():
         return  """
                 UPDATE Cosmeticos
                 SET qtd = ?, nome = ?, preco = ?,tipo = ?,genero = ?
                 WHERE codigo = ?
                 """
     @staticmethod
-    def query_delete():
+    def delete():
         return  """
                 DELETE FROM Cosmeticos WHERE codigo = ?
                 """
 
     @staticmethod
-    def query_obter_dados():
+    def obter_dados():
         return  """
                     SELECT * FROM Cosmeticos
                 """

@@ -13,7 +13,7 @@ class DatabaseVenda(Query, metaclass=SingletonMeta):
         if not os.path.isfile(self.get_caminho_db):
             conn = sqlite3.connect(self.get_caminho_db)
             exec = conn.cursor()
-            exec.execute(super().query_criar_tabela())
+            exec.execute(super().criar_tabela())
 
     @property
     def get_caminho_db(self):
@@ -22,7 +22,7 @@ class DatabaseVenda(Query, metaclass=SingletonMeta):
     def get_venda(self):
         conn = sqlite3.connect(self.get_caminho_db)
         exec = conn.cursor()
-        exec.execute(super().query_obter_dados())
+        exec.execute(super().obter_dados())
         dados = []
         for venda in exec.fetchall():
             dados.append(venda)
@@ -31,5 +31,5 @@ class DatabaseVenda(Query, metaclass=SingletonMeta):
     def salvar_venda(self, codigo, nome, qtd, preco, tipo, genero):
         conn = sqlite3.connect(self.get_caminho_db)
         exec = conn.cursor()
-        exec.execute(super().query_salvar(), (codigo, nome, qtd, preco, tipo, genero))
+        exec.execute(super().salvar(), (codigo, nome, qtd, preco, tipo, genero))
         conn.commit()
